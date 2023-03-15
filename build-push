@@ -11,14 +11,7 @@ pipeline {
         stage('Build and push image') {
             steps {
                 script {
-                        def generator = { String alphabet, int n ->
-                            new Random().with {
-                            (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
-                            }
-                        }
-                        var tag = TAG = generator( (('a'..'z')+('0'..'9')).join(), 6 )
-                        docker.Build("hosseinmohammadi/web-service-go:latest")
-
+                        def image = docker.Build("hosseinmohammadi/web-service-go:latest")
 
                     }
                 }
