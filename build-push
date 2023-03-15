@@ -14,7 +14,7 @@ pipeline {
                 script {
                     // Build the Docker image
                     docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_USERNAME, DOCKER_HUB_PASSWORD) {
-                        def customImage = docker.build('my-image:latest', '.')
+                        def customImage = docker.build('hosseinmohammadi/web-service-go:latest', '.')
                         // Push the Docker image to Docker Hub
                         customImage.push()
                     }
