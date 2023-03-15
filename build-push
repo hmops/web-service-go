@@ -11,6 +11,7 @@ pipeline {
             }
         }
         TAG = generator( (('a'..'z')+('0'..'9')).join(), 6 )
+        TAG = "latest"
     }
 
     stages {
@@ -18,11 +19,11 @@ pipeline {
             steps {
                 script {
                         docker.Build("hosseinmohammadi/web-service-go:${TAG}")
-                        
+
                     }
                 }
             }
         }
-    }
+    
 }
 
