@@ -5,11 +5,11 @@ pipeline {
         // Set environment variables as needed
         DOCKER_HUB_USERNAME = credentials('docker-hub-username')
         DOCKER_HUB_PASSWORD = credentials('docker-hub-password')
-        // def generator = { String alphabet, int n ->
-        //     new Random().with {
-        //         (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
-        //     }
-        // }
+        def generator = { String alphabet, int n ->
+            new Random().with {
+                (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+            }
+        }
         // TAG = generator( (('a'..'z')+('0'..'9')).join(), 6 )
         TAG = "latest"
     }
