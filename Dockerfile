@@ -12,20 +12,15 @@ COPY main.go .
 # Build the Go binary with optimizations
 RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o app .
 
-
-### Certs
-FROM alpine:latest as certs
-RUN apk --update add ca-certificates
-
-
 # Use a scratch image as the final image
 FROM scratch
 
-COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 # Copy only the necessary files to the final image
 COPY --from=builder /app/app .
 
+# Expose the application on port 8080
 EXPOSE 8080
+
 # Set the command to run the binary
 CMD ["/app"]
 
