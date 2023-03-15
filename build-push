@@ -5,7 +5,7 @@ pipeline {
         // Set environment variables as needed
         DOCKER_HUB_USERNAME = credentials('docker-hub-username')
         DOCKER_HUB_PASSWORD = credentials('docker-hub-password')
-        # KUBECONFIG = credentials('kubeconfig')
+        // KUBECONFIG = credentials('kubeconfig')
     }
 
     stages {
@@ -21,23 +21,23 @@ pipeline {
                 }
             }
         }
-#        stage('Deploy to Kubernetes') {
-#            steps {
-#                script {
-#                    // Set up kubectl
-#                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-#                        sh """
-#                            mkdir ~/.kube
-#                            cp ${KUBECONFIG} ~/.kube/config
-#                            chmod 600 ~/.kube/config
-#                            kubectl config use-context my-context
-#                        """
-#                    }
-#                    // Deploy the Docker image to the Kubernetes cluster
-#                    sh 'kubectl apply -f deployment.yaml'
-#                }
-#            }
-#        }
+    //    stage('Deploy to Kubernetes') {
+    //        steps {
+    //            script {
+    //                // Set up kubectl
+    //                withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+    //                    sh """
+    //                        mkdir ~/.kube
+    //                        cp ${KUBECONFIG} ~/.kube/config
+    //                        chmod 600 ~/.kube/config
+    //                        kubectl config use-context my-context
+    //                    """
+    //                }
+    //                // Deploy the Docker image to the Kubernetes cluster
+    //                sh 'kubectl apply -f deployment.yaml'
+    //            }
+    //        }
+    //    }
     }
 }
 
