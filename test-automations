@@ -4,8 +4,9 @@ pipeline {
     stages {
         stage('deploy regression tests to k8s') {
             steps {
-                
-                kubernetesDeploy(configs: "test-job.yaml", kubeconfigId: "devkubeconfig")
+                script {
+                    kubernetesDeploy(configs: "test-job.yaml", kubeconfigId: "devkubeconfig")
+                }
             }
         }
         

@@ -1,6 +1,6 @@
 apiVersion: batch/v1
 kind: Job
-mwtadata:
+metadata:
   name: test-automation
 spec:
   template:
@@ -11,7 +11,7 @@ spec:
         env:
           - name: BASE_URL 
             value: "https://dev.ui.formica.ai/master"
-      registerPolicy: Never
       imagePullSecrets:
       - name: github-registry
+      restartPolicy: Never
 
