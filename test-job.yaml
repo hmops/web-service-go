@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+mwtadata:
+  name: test-automation
+spec:
+  template:
+    spec:
+      containers:
+      - name: test-pod
+        image: ghcr.io/trlogic/formica-test-automation:0.0.1
+        env:
+          - name: BASE_URL 
+            value: "https://dev.ui.formica.ai/master"
+      registerPolicy: Never
+      imagePullSecrets:
+      - name: github-registry
+
