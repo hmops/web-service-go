@@ -1,11 +1,15 @@
 pipeline {
     agent any
 
-    stage('Apply Kubernetes files') {
-        withKubeConfig([credentialsId: 'devkubeconfig', serverUrl: 'https://192.168.14.10:6443']) {
-        sh 'kubectl get po -A'
+    stages {
+        stage('deploy regression tests to k8s') {
+            steps {
+                withKubeConfig([credentialsId: 'devkubeconfig', serverUrl: 'https://192.168.14.10:6443']) {
+                sh 'kubectl get po -A'
+                }
+            }
         }
+        
     }
-
-
+    
 }
