@@ -1,13 +1,11 @@
 pipeline {
     agent any
 
-    node {
-  stage('Apply Kubernetes files') {
-    withKubeConfig([credentialsId: 'devkubeconfig', serverUrl: 'https://192.168.14.10:6443']) {
-      sh 'kubectl get po -A'
+    stage('Apply Kubernetes files') {
+        withKubeConfig([credentialsId: 'devkubeconfig', serverUrl: 'https://192.168.14.10:6443']) {
+        sh 'kubectl get po -A'
+        }
     }
-  }
-}
 
 
 }
