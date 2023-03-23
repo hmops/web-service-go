@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: test-automation
+  namespace: tests
 spec:
   template:
     spec:

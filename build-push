@@ -11,7 +11,7 @@ pipeline {
         stage('Build and push image') {
             steps {
                 script {
-                        def image = docker.Build("hosseinmohammadi/web-service-go:latest")
+                        docker.Build("hosseinmohammadi/web-service-go:latest")
 
                     }
                 }
