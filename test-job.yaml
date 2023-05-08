@@ -3,6 +3,7 @@ kind: Job
 metadata:
   name: test-automation
 spec:
+  ttlSecondsAfterFinished: 100
   template:
     spec:
       containers:
